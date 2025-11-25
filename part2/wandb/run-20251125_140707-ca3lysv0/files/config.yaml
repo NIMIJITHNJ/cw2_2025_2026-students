@@ -1,0 +1,106 @@
+_wandb:
+    value:
+        cli_version: 0.21.4
+        e:
+            jpza74pbgn5htx5ucqg3cge7m2egj31k:
+                args:
+                    - --model-config
+                    - model_config_medium.yaml
+                    - --train-config
+                    - train_config_medium_lr_0_002.yaml
+                    - --wandb-project
+                    - cw2_part2_medium_lr_0_002
+                codePath: part2/train.py
+                codePathLocal: train.py
+                cpu_count: 1
+                cpu_count_logical: 2
+                cudaVersion: "12.4"
+                disk:
+                    /:
+                        total: "120942624768"
+                        used: "50526785536"
+                email: nimijithwr@gmail.com
+                executable: /usr/bin/python3
+                git:
+                    commit: 0ef656031ec0ef6fed491449f464c10290523d5c
+                    remote: https://NIMIJITHNJ:@github.com/NIMIJITHNJ/cw2_2025_2026-students.git
+                gpu: Tesla T4
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Turing
+                      cudaCores: 2560
+                      memoryTotal: "16106127360"
+                      name: Tesla T4
+                      uuid: GPU-7853d758-686e-c1b7-bb07-567c51a5223c
+                host: 4a5689ad5e1d
+                memory:
+                    total: "13605851136"
+                os: Linux-6.6.105+-x86_64-with-glibc2.35
+                program: /content/cw2_2025_2026-students/part2/train.py
+                python: CPython 3.12.12
+                root: /content/cw2_2025_2026-students/part2
+                startedAt: "2025-11-25T14:07:07.283477Z"
+                writerId: jpza74pbgn5htx5ucqg3cge7m2egj31k
+        m: []
+        python_version: 3.12.12
+        t:
+            "1":
+                - 1
+                - 5
+                - 53
+                - 105
+            "2":
+                - 1
+                - 5
+                - 53
+                - 105
+            "3":
+                - 13
+                - 16
+                - 61
+            "4": 3.12.12
+            "5": 0.21.4
+            "12": 0.21.4
+            "13": linux-x86_64
+betas:
+    value:
+        - 0.9
+        - 0.95
+block_size:
+    value: 128
+decay_lr:
+    value: true
+dev_batch_size:
+    value: 128
+dropout:
+    value: 0.1
+grad_clip:
+    value: 1
+log_every:
+    value: 10
+lr:
+    value: 0.002
+max_epoch:
+    value: 30
+min_lr:
+    value: 6e-05
+n_embed:
+    value: 64
+n_head:
+    value: 4
+n_layer:
+    value: 4
+patience:
+    value: 5
+seed:
+    value: 0
+train_batch_size:
+    value: 32
+valid_niter:
+    value: 2000
+vocab_size:
+    value: 15003
+warmup_percent_iters:
+    value: 0.1
+weight_decay:
+    value: 0.1
