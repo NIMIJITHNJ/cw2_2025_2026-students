@@ -1,0 +1,46 @@
+{
+  "os":  "Linux-6.6.105+-x86_64-with-glibc2.35",
+  "python":  "CPython 3.12.12",
+  "startedAt":  "2025-11-25T15:54:42.272553Z",
+  "args":  [
+    "--train-config",
+    "train_config_large_bs64_lr_0_002.yaml",
+    "--model-config",
+    "model_config.yaml"
+  ],
+  "program":  "/content/cw2_2025_2026-students/part2/train.py",
+  "codePath":  "part2/train.py",
+  "codePathLocal":  "train.py",
+  "git":  {
+    "remote":  "https://NIMIJITHNJ:@github.com/NIMIJITHNJ/cw2_2025_2026-students.git",
+    "commit":  "25da76d87897f6b67ba21e9c00f94a9b8ee8a8df"
+  },
+  "email":  "nimijithwr@gmail.com",
+  "root":  "/content/cw2_2025_2026-students/part2",
+  "host":  "4a5689ad5e1d",
+  "executable":  "/usr/bin/python3",
+  "cpu_count":  1,
+  "cpu_count_logical":  2,
+  "gpu":  "Tesla T4",
+  "gpu_count":  1,
+  "disk":  {
+    "/":  {
+      "total":  "120942624768",
+      "used":  "50473361408"
+    }
+  },
+  "memory":  {
+    "total":  "13605851136"
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "Tesla T4",
+      "memoryTotal":  "16106127360",
+      "cudaCores":  2560,
+      "architecture":  "Turing",
+      "uuid":  "GPU-7853d758-686e-c1b7-bb07-567c51a5223c"
+    }
+  ],
+  "cudaVersion":  "12.4",
+  "writerId":  "t7b8k0zql7exbg0mlpskd23rrcv8wx29"
+}
