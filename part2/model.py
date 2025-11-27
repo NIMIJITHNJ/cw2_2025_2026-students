@@ -348,10 +348,45 @@ class GPT(nn.Module):
 
             if do_sample:
                 ### Your code here (~5-12 lines) ###
-                raise NotImplementedError("Implement sampling in the generate method in model.py (MSc students only)")
+                
                 # 1. If top_k is not None, crop the logits to only the top k options
-
+                if top_k is not None and top_k > 0:
+                    # Keep only top_k logits, set the rest to -inf
+                    values, indices = torch.topk(logits, top_k, dim=-1)
+                    logits_filtered = torch.full_like(logits, float("-inf"))
+                    logits_filtered.scatter_(1, indices, values)
+                    logits = logits_filtered
                 # 2. If top_p is not None, crop the logits to only the top p options
+                if top_p is not None and 0.0 < top_p < 1.0:
+                    # Work in probability space for cumulative sum
+                    probs = F.softmax(logits, dim=-1)
+
+                    # Sort probabilities descending
+                    sorted_probs, sorted_indices = torch.sort(
+                        probs, descending=True, dim=-1
+                    )
+                    cumprobs = torch.cumsum(sorted_probs, dim=-1)
+
+                    # Mask tokens once cumulative prob exceeds p
+                    sorted_mask = cumprobs > top_p
+                    # Keep at least the first token above the threshold
+                    sorted_mask[..., 1:] = sorted_mask[..., :-1].clone()
+                    sorted_mask[..., 0] = False
+
+                    # Zero out masked probabilities
+                    sorted_probs = sorted_probs.masked_fill(sorted_mask, 0.0)
+
+                    # Map back to original token order
+                    probs = torch.zeros_like(probs).scatter(1, sorted_indices, sorted_probs)
+                else:
+                    # No top-p: normal softmax over (possibly top-k filtered) logits
+                    probs = F.softmax(logits, dim=-1)
+
+                # Sample next token from the final distribution
+                predicted_id = torch.multinomial(probs, num_samples=1)
+
+                # Append sampled token to sequence
+                input_ids = torch.cat((input_ids, predicted_id), dim=1)
 
                 # apply softmax to convert logits to (normalized) probabilities
                 # sample from the distribution using the re-normalized probabilities
