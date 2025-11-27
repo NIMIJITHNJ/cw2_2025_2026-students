@@ -261,7 +261,7 @@ class NMT(nn.Module):
         scores = torch.bmm(
             enc_hiddens_proj,                                  # (b, src_len, h)
             dec_hidden.unsqueeze(2)                            # (b, h, 1)
-        ).squeeze(2)                                           # → (b, src_len)
+        ).squeeze(2)                                           # (b, src_len)
 
         if enc_masks is not None:
             scores = scores.masked_fill(enc_masks.bool(), float("-inf"))
@@ -271,7 +271,7 @@ class NMT(nn.Module):
         context = torch.bmm(
             alpha_t.unsqueeze(1),                              # (b, 1, src_len)
             enc_hiddens                                        # (b, src_len, 2h)
-        ).squeeze(1)                                           # → (b, 2h)
+        ).squeeze(1)                                           # (b, 2h)
 
         u_t = torch.cat([dec_hidden, context], dim=1)          # (b, 3h)
 
